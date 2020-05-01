@@ -1,0 +1,89 @@
+﻿@model Lethal.Developer.ViewModels.QuestionViewModel
+
+@{
+    ViewData["Title"] = "Detail";
+    var cardcollapseId = "#collapseCardExample";
+    var collapse = "collapseCardExample";
+    var index = 0;
+}
+
+
+<h1>@Model.TopicName</h1>
+
+<!-- Topbar Search -->
+<form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+    <div class="input-group">
+        <i class="fas fa-question fa-sm"></i><input id="question-input" type="text" class="form-control bg-light border-0 large" placeholder="Search for..." aria-label="Type Your Question" aria-describedby="basic-addon2">
+    </div>
+</form>
+
+<form>
+    <textarea name="editor1" id="editor1" rows="10" cols="80"></textarea>
+    <script>
+        // Replace the <textarea id="editor1"> with a CKEditor
+        // instance, using default configuration.
+        CKEDITOR.replace('editor1');
+    </script>
+</form>
+
+<button onclick="createQuestion()" class="btn-success">
+    Create Question
+</button>
+
+
+
+
+
+@foreach (var item in Model.Questions)
+{
+    <div class="card shadow mb-4">
+        <!-- Card Header - Accordion -->
+        <a href="@(cardcollapseId + index)" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="@(collapse + index)">
+            <h6 class="m-0 font-weight-bold text-primary">@Html.Raw(item.Q)</h6>
+        </a>
+        <!-- Card Content - Collapse -->
+        <div class="collapse" id="@(collapse + index)">
+            <div class="card-body">
+                @Html.Raw(item.A)
+            </div>
+        </div>
+    </div>
+    index++;
+}
+
+<script>
+    function createQuestion() {
+        var question = document.getElementsByTagName("input")[0].value;
+
+        var iframe = document.getElementsByTagName("iframe")[0];
+        var html = iframe.contentWindow.document.getElementsByTagName("html")[0];
+        var body = html.getElementsByTagName("body")[0];
+        var insideBody = body.querySelectorAll('body > *');
+        var returnHtml = "";
+
+        insideBody.forEach(x => returnHtml += x.outerHTML);
+
+        var data = {
+            Question: question,
+            Answer: returnHtml,
+            TopicId: @Model.TopicId
+        };
+
+        $.ajax({
+            type: "POST",
+            url: '/questions/create',
+            //headers: {
+            //    'Authorization': `Bearer ${token}`,
+            //},
+            datatype: "json",
+            contentType: "application/json",
+            data: JSON.stringify(data),
+            success: function (result) {
+                window.location.reload();
+            },
+            error: function (error) {
+            }
+        })
+    }
+</script>
+

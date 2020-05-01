@@ -1,0 +1,7 @@
+﻿pre {
+    font-size:12px;
+}
+
+#cke_1_contents[style] {
+    height: 50vh !important;
+}
