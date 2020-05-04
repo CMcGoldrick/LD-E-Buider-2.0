@@ -51,6 +51,7 @@ namespace Lethal.Developer.ViewProviders.Services
                 {
                     qs.Add(new Question
                     { 
+                        Id = q.Id,
                         Q = q.Q,
                         A = q.A
                     }); 
@@ -61,6 +62,40 @@ namespace Lethal.Developer.ViewProviders.Services
                 qvm.TopicName = questions.FirstOrDefault().Topic.Name;
 
                 return qvm;
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+        }
+
+        public async Task<QuestionViewModel> GetQuestionByIdAsync(int questionId)
+        {
+            try
+            {
+                var question = await _questionRepository.GetQuestionByIdAsync(questionId);
+                var qvm = new QuestionViewModel();
+                var ql = new List<Question>();
+
+                ql.Add(new Question { Id = question.Id, Q = question.Q, A = question.A });
+
+                qvm.Questions = ql;
+
+                return qvm;
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+        }
+
+        public async Task DeleteQuestionAsync(int id)
+        {
+            try
+            {
+                await _questionRepository.DeleteQuestionAsync(id);
             }
             catch (Exception ex)
             {

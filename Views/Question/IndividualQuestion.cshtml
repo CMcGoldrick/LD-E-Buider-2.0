@@ -1,0 +1,38 @@
+﻿@model Lethal.Developer.ViewModels.QuestionViewModel;
+@using System.Web;
+
+@{
+    ViewData["Title"] = "Edit";
+    var currentQuestion = Model.Questions.FirstOrDefault();
+}
+
+<!-- Topbar Search -->
+<form>
+    <div class="input-group">
+        <input id="question-input" type="text" class="form-control bg-light border-0 large" value="@Html.Raw(currentQuestion.Q)" aria-label="Type Your Question" aria-describedby="basic-addon2">
+    </div>
+</form>
+
+<form>
+    <textarea name="editor1" id="editor1" rows="10" cols="80"></textarea>
+    <script>
+        CKEDITOR.replace('editor1');
+    </script>
+</form>
+
+
+<script>
+    function getThatBody() {
+        var iframe = document.getElementsByTagName("iframe")[0];
+        var html = iframe.contentWindow.document.getElementsByTagName("html")[0];
+        var theBody = html.getElementsByTagName("body")[0];
+
+        theBody.innerHTML = `@Html.Raw(currentQuestion.A)`;
+        //theBody.style.cssText = "background: #222 !important; color: #fff"; 
+
+        console.log(theBody.innerHTML);
+    };
+
+    document.onload = setTimeout(getThatBody,500);
+
+</script>

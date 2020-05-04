@@ -10,5 +10,7 @@ namespace Lethal.Developer.DataAccess.Interfaces
     {
         Task CreateQuestionAsync(Question question);
         Task<IEnumerable<Question>> GetQuestionsByTopicAsync(Guid userId, int topicId);
+        Task<Question> GetQuestionByIdAsync(int questionId);
+        Task DeleteQuestionAsync(int Id);
     }
 }

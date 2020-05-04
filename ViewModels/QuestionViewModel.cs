@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Html;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection.Metadata.Ecma335;
@@ -15,6 +16,7 @@ namespace Lethal.Developer.ViewModels
 
     public class Question
     {
+        public int Id { get; set; }
         public string Q { get; set; }
         public string A { get; set; }
     }

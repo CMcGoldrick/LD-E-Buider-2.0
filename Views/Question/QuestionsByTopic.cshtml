@@ -8,56 +8,65 @@
 }
 
 
-<h1>@Model.TopicName</h1>
+<h1 class="page-header">Topic: @Model.TopicName</h1>
 
 <!-- Topbar Search -->
-<form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+<form>
     <div class="input-group">
-        <i class="fas fa-question fa-sm"></i><input id="question-input" type="text" class="form-control bg-light border-0 large" placeholder="Search for..." aria-label="Type Your Question" aria-describedby="basic-addon2">
+        <input id="question-input" type="text" class="form-control bg-light border-0 large" placeholder=" Type the exam question... " aria-label="Type Your Question" aria-describedby="basic-addon2">
+        @*<i class="fas fa-question fa-sm"></i>*@
     </div>
 </form>
 
 <form>
     <textarea name="editor1" id="editor1" rows="10" cols="80"></textarea>
     <script>
-        // Replace the <textarea id="editor1"> with a CKEditor
-        // instance, using default configuration.
         CKEDITOR.replace('editor1');
     </script>
 </form>
 
-<button onclick="createQuestion()" class="btn-success">
+<button onclick="createQuestion()" class="btn-success create-button">
     Create Question
 </button>
-
-
-
 
 
 @foreach (var item in Model.Questions)
 {
     <div class="card shadow mb-4">
-        <!-- Card Header - Accordion -->
         <a href="@(cardcollapseId + index)" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="@(collapse + index)">
-            <h6 class="m-0 font-weight-bold text-primary">@Html.Raw(item.Q)</h6>
+            <div class="float-left">
+                <h6 class="m-0 font-weight-bold text-primary">@Html.Raw(item.Q)</h6>
+            </div>
+            <div class="float-right">
+                <button onclick="openIndividualQuestion(@item.Id)" class="btn-warning rounded">Edit</button>
+                <button onclick="deleteQuestion(@item.Id)" class="btn-danger rounded">Delete</button>
+            </div>
         </a>
-        <!-- Card Content - Collapse -->
-        <div class="collapse" id="@(collapse + index)">
-            <div class="card-body">
-                @Html.Raw(item.A)
+            <div class="collapse" id="@(collapse + index)">
+                <div class="card-body">
+                    @Html.Raw(item.A)
+                </div>
             </div>
         </div>
-    </div>
-    index++;
+        index++;
 }
 
 <script>
+    //function setEditorStyle() {
+    //    var iframe = document.getElementsByTagName("iframe")[0];
+    //    var html = iframe.contentWindow.document.getElementsByTagName("html")[0];
+    //    var body = html.getElementsByTagName("body")[0];
+    //    body.style.cssText = "background: #222 !important; color: #fff"; 
+    //}
+    //document.onload = setTimeout(setEditorStyle, 500);
+
     function createQuestion() {
         var question = document.getElementsByTagName("input")[0].value;
 
         var iframe = document.getElementsByTagName("iframe")[0];
         var html = iframe.contentWindow.document.getElementsByTagName("html")[0];
         var body = html.getElementsByTagName("body")[0];
+
         var insideBody = body.querySelectorAll('body > *');
         var returnHtml = "";
 
@@ -79,6 +88,24 @@
             contentType: "application/json",
             data: JSON.stringify(data),
             success: function (result) {
+                console.log(result);
+                window.location.reload();
+            },
+            error: function (error) {
+            }
+        })
+    }
+
+    function openIndividualQuestion(id) {
+        window.location.href = `/question/${id}`
+    }
+
+    function deleteQuestion(id) {
+        $.ajax({
+            type: "DELETE",
+            url: `/questions/delete/${id}`,
+            success: function (result) {
+                console.log(result);
                 window.location.reload();
             },
             error: function (error) {

@@ -8628,11 +8628,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\13127\\Desktop\\lethal-teacher-cba45eb7b06ee9d09237a82c136e71798783aa60\\Lethal.Developer.csproj",
+      "projectUniqueName": "C:\\Users\\13127\\Documents\\repos\\Lethal.Developer\\Lethal.Developer.csproj",
       "projectName": "Lethal.Developer",
-      "projectPath": "C:\\Users\\13127\\Desktop\\lethal-teacher-cba45eb7b06ee9d09237a82c136e71798783aa60\\Lethal.Developer.csproj",
+      "projectPath": "C:\\Users\\13127\\Documents\\repos\\Lethal.Developer\\Lethal.Developer.csproj",
       "packagesPath": "C:\\Users\\13127\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\13127\\Desktop\\lethal-teacher-cba45eb7b06ee9d09237a82c136e71798783aa60\\obj\\",
+      "outputPath": "C:\\Users\\13127\\Documents\\repos\\Lethal.Developer\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\"

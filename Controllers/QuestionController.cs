@@ -57,5 +57,39 @@ namespace Lethal.Developer.Controllers
             return View(questions);
         }
 
+        [HttpGet]
+        [Route("question/{questionId}")]
+        public async Task<IActionResult> IndividualQuestion(int questionId)
+        {
+            try
+            {
+                var question = await _questionProvider.GetQuestionByIdAsync(questionId);
+                var bvm = await BaseViewModel;
+                question.Topics = bvm.Topics;
+                return View(question);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest();
+                throw;
+            }
+        }
+
+        [HttpDelete]
+        [Route("questions/delete/{id}")]
+        public async Task<IActionResult> DeleteAction(int id)
+        {
+            try
+            {
+                await _questionProvider.DeleteQuestionAsync(id);
+                return Ok(Delete.Success("question"));
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+        }
+
     }
 }

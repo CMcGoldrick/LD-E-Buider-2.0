@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 using System.Runtime.InteropServices.ComTypes;
 using System.Data.Common;
+using Microsoft.EntityFrameworkCore.Scaffolding.Metadata;
 
 namespace Lethal.Developer.DataAccess.Services
 {
@@ -57,5 +58,38 @@ namespace Lethal.Developer.DataAccess.Services
             }
         }
 
+        public async Task<Question> GetQuestionByIdAsync(int questionId)
+        {
+            try
+            {
+                var db = _serviceProvider.GetService<ApplicationDbContext>();
+
+                var question = await db.Questions.FirstOrDefaultAsync(q => q.Id == questionId);
+
+                return question;
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+        }
+
+        public async Task DeleteQuestionAsync(int id)
+        {
+            try
+            {
+                var db = _serviceProvider.GetService<ApplicationDbContext>();
+                var questionToRemove =  await db.Questions.FirstOrDefaultAsync(q => q.Id == id);
+
+                db.Remove(questionToRemove);
+                await db.SaveChangesAsync();
+            }
+            catch (DbException dbex)
+            {
+
+                throw;
+            }
+        }
     }
 }

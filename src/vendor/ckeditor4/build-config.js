@@ -13,10 +13,10 @@
  * (1) https://ckeditor.com/cke4/builder
  *     Visit online builder to build CKEditor from scratch.
  *
- * (2) https://ckeditor.com/cke4/builder/f08d0bacda1d554557251da11e639bb4
+ * (2) https://ckeditor.com/cke4/builder/5ebf062bc5529f83663a89488457c8bb
  *     Visit online builder to build CKEditor, starting with the same setup as before.
  *
- * (3) https://ckeditor.com/cke4/builder/download/f08d0bacda1d554557251da11e639bb4
+ * (3) https://ckeditor.com/cke4/builder/download/5ebf062bc5529f83663a89488457c8bb
  *     Straight download link to the latest version of CKEditor (Optimized) with the same setup as before.
  *
  * NOTE:
@@ -25,7 +25,7 @@
  */
 
 var CKBUILDER_CONFIG = {
-	skin: 'moono-lisa',
+	skin: 'moono-dark',
 	preset: 'full',
 	ignore: [
 		'.DS_Store',
@@ -94,6 +94,7 @@ var CKBUILDER_CONFIG = {
 		'pastefromword' : 1,
 		'pastetext' : 1,
 		'pastetools' : 1,
+		'pbckcode' : 1,
 		'preview' : 1,
 		'print' : 1,
 		'removeformat' : 1,
