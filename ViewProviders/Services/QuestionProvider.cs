@@ -91,6 +91,19 @@ namespace Lethal.Developer.ViewProviders.Services
             }
         }
 
+        public async Task UpdateQuestionAsync(CreateQuestionViewModel question)
+        {
+            try
+            {
+                await _questionRepository.UpdateQuestionAsync(question);
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+        }
+
         public async Task DeleteQuestionAsync(int id)
         {
             try

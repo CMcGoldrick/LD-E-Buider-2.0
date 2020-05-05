@@ -75,6 +75,22 @@ namespace Lethal.Developer.Controllers
             }
         }
 
+        [HttpPut]
+        [Route("questions/update")]
+        public async Task<IActionResult> UpdateQuestion([FromBody] CreateQuestionViewModel question)
+        {
+            try
+            {
+                await _questionProvider.UpdateQuestionAsync(question);
+                return Ok(Put.Success("question"));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+                throw;
+            }
+        }
+
         [HttpDelete]
         [Route("questions/delete/{id}")]
         public async Task<IActionResult> DeleteAction(int id)

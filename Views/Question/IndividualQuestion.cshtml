@@ -6,7 +6,9 @@
     var currentQuestion = Model.Questions.FirstOrDefault();
 }
 
-<!-- Topbar Search -->
+
+<button class="btn-warning large rounded" onclick="updateQuestion(@currentQuestion.Id)">Update This Question</button>
+
 <form>
     <div class="input-group">
         <input id="question-input" type="text" class="form-control bg-light border-0 large" value="@Html.Raw(currentQuestion.Q)" aria-label="Type Your Question" aria-describedby="basic-addon2">
@@ -22,17 +24,62 @@
 
 
 <script>
+    function updateQuestion(id) {
+        var question = document.getElementsByTagName("input")[0].value;
+
+        var iframe = document.getElementsByTagName("iframe")[0];
+        var html = iframe.contentWindow.document.getElementsByTagName("html")[0];
+        var body = html.getElementsByTagName("body")[0];
+
+        var insideBody = body.querySelectorAll('body > *');
+        var returnHtml = "";
+
+        insideBody.forEach(x => returnHtml += x.outerHTML);
+
+        var data = {
+            Id: id,
+            Question: question,
+            Answer: returnHtml,
+            TopicId: @Model.TopicId
+        };
+
+        $.ajax({
+            type: "PUT",
+            url: '/questions/update',
+            //headers: {
+            //    'Authorization': `Bearer ${token}`,
+            //},
+            datatype: "json",
+            contentType: "application/json",
+            data: JSON.stringify(data),
+            success: function (result) {
+                console.log(result);
+                window.location.reload();
+            },
+            error: function (error) {
+            }
+        })
+
+        //window.location.href = "/questions/@Model.TopicId";
+    }
+
+
     function getThatBody() {
         var iframe = document.getElementsByTagName("iframe")[0];
         var html = iframe.contentWindow.document.getElementsByTagName("html")[0];
         var theBody = html.getElementsByTagName("body")[0];
 
         theBody.innerHTML = `@Html.Raw(currentQuestion.A)`;
-        //theBody.style.cssText = "background: #222 !important; color: #fff"; 
 
         console.log(theBody.innerHTML);
     };
 
-    document.onload = setTimeout(getThatBody,500);
+    document.onload = setTimeout(getThatBody,750);
 
 </script>
+
+<style>
+    #cke_1_contents{
+        height: 65vh !important;
+    }
+</style>

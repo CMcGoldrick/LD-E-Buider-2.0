@@ -158,12 +158,10 @@ C:\Users\13127\Documents\repos\Lethal.Developer\obj\Debug\netcoreapp3.1\staticwe
 C:\Users\13127\Documents\repos\Lethal.Developer\obj\Debug\netcoreapp3.1\Lethal.Developer.dll
 C:\Users\13127\Documents\repos\Lethal.Developer\obj\Debug\netcoreapp3.1\Lethal.Developer.pdb
 C:\Users\13127\Documents\repos\Lethal.Developer\obj\Debug\netcoreapp3.1\Lethal.Developer.genruntimeconfig.cache
-C:\Users\13127\Documents\repos\Lethal.Developer\obj\Debug\netcoreapp3.1\Razor\Views\Question\Create.cshtml.g.cs
 C:\Users\13127\Documents\repos\Lethal.Developer\bin\Debug\netcoreapp3.1\Microsoft.AspNet.Identity.Core.dll
 C:\Users\13127\Documents\repos\Lethal.Developer\obj\Debug\netcoreapp3.1\Lethal.Developer.csproj.CoreCompileInputs.cache
 C:\Users\13127\Documents\repos\Lethal.Developer\obj\Debug\netcoreapp3.1\Lethal.Developer.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\13127\Documents\repos\Lethal.Developer\obj\Debug\netcoreapp3.1\Lethal.Developer.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\13127\Documents\repos\Lethal.Developer\obj\Debug\netcoreapp3.1\Lethal.Developer.csprojAssemblyReference.cache
 C:\Users\13127\Documents\repos\Lethal.Developer\obj\Debug\netcoreapp3.1\Razor\Views\Question\QuestionsByTopic.cshtml.g.cs
 C:\Users\13127\Desktop\lethal-teacher-cba45eb7b06ee9d09237a82c136e71798783aa60\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\Users\13127\Desktop\lethal-teacher-cba45eb7b06ee9d09237a82c136e71798783aa60\bin\Debug\netcoreapp3.1\appsettings.json
@@ -333,3 +331,4 @@ C:\Users\13127\Desktop\lethal-teacher-cba45eb7b06ee9d09237a82c136e71798783aa60\o
 C:\Users\13127\Desktop\lethal-teacher-cba45eb7b06ee9d09237a82c136e71798783aa60\obj\Debug\netcoreapp3.1\Lethal.Developer.pdb
 C:\Users\13127\Desktop\lethal-teacher-cba45eb7b06ee9d09237a82c136e71798783aa60\obj\Debug\netcoreapp3.1\Lethal.Developer.genruntimeconfig.cache
 C:\Users\13127\Documents\repos\Lethal.Developer\obj\Debug\netcoreapp3.1\Razor\Views\Question\IndividualQuestion.cshtml.g.cs
+C:\Users\13127\Documents\repos\Lethal.Developer\obj\Debug\netcoreapp3.1\Lethal.Developer.csprojAssemblyReference.cache

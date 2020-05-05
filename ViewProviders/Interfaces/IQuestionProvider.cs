@@ -11,6 +11,7 @@ namespace Lethal.Developer.ViewProviders.Interfaces
         Task CreateQuestionAsync(Guid userId, CreateQuestionViewModel question);
         Task<QuestionViewModel> GetQuestionsByTopicAsync(Guid userId, int topicId);
         Task<QuestionViewModel> GetQuestionByIdAsync(int questionId);
+        Task UpdateQuestionAsync(CreateQuestionViewModel question);
         Task DeleteQuestionAsync(int id);
     }
 }

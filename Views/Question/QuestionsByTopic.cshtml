@@ -7,14 +7,11 @@
     var index = 0;
 }
 
+<h1 class="page-header">Topic: <span class="btc-color">@Model.TopicName</span></h1>
 
-<h1 class="page-header">Topic: @Model.TopicName</h1>
-
-<!-- Topbar Search -->
 <form>
     <div class="input-group">
         <input id="question-input" type="text" class="form-control bg-light border-0 large" placeholder=" Type the exam question... " aria-label="Type Your Question" aria-describedby="basic-addon2">
-        @*<i class="fas fa-question fa-sm"></i>*@
     </div>
 </form>
 
@@ -25,14 +22,11 @@
     </script>
 </form>
 
-<button onclick="createQuestion()" class="btn-success create-button">
-    Create Question
-</button>
-
+<button onclick="createQuestion()" class="btn-success create-button">Create Question</button>
 
 @foreach (var item in Model.Questions)
 {
-    <div class="card shadow mb-4">
+    <div class="card shadow">
         <a href="@(cardcollapseId + index)" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="@(collapse + index)">
             <div class="float-left">
                 <h6 class="m-0 font-weight-bold text-primary">@Html.Raw(item.Q)</h6>
@@ -52,14 +46,6 @@
 }
 
 <script>
-    //function setEditorStyle() {
-    //    var iframe = document.getElementsByTagName("iframe")[0];
-    //    var html = iframe.contentWindow.document.getElementsByTagName("html")[0];
-    //    var body = html.getElementsByTagName("body")[0];
-    //    body.style.cssText = "background: #222 !important; color: #fff"; 
-    //}
-    //document.onload = setTimeout(setEditorStyle, 500);
-
     function createQuestion() {
         var question = document.getElementsByTagName("input")[0].value;
 

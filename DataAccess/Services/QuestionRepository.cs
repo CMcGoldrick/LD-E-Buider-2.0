@@ -75,6 +75,37 @@ namespace Lethal.Developer.DataAccess.Services
             }
         }
 
+        public async Task UpdateQuestionAsync(ViewModels.CreateQuestionViewModel q)
+        {
+            try
+            {
+                var db = _serviceProvider.GetService<ApplicationDbContext>();
+
+                var question = await db.Questions.FirstOrDefaultAsync(q => q.Id == q.Id);
+
+                question.Q = q.Question;
+                db.Entry(question).Property("Q").IsModified = true;
+
+                question.A = q.Answer;
+                db.Entry(question).Property("A").IsModified = true;
+
+                var rowsUpdated = await db.SaveChangesAsync();
+
+                if (rowsUpdated == 0)
+                    throw new DbUpdateException("Unable to update DB");
+            }
+            catch (DbUpdateException dbex)
+            {
+                //_logger.LogError($"ERROR - This Watchlist item can not be updated-> {dbex.Message} {dbex.StackTrace}");
+                throw new DbUpdateException("Unable to update question");
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+        }
+
         public async Task DeleteQuestionAsync(int id)
         {
             try

@@ -7,6 +7,7 @@ namespace Lethal.Developer.ViewModels
 {
     public class CreateQuestionViewModel
     {
+        public int Id { get; set; }
         public int TopicId { get; set; }
         public string Question { get; set; }
         public string Answer { get; set; }
