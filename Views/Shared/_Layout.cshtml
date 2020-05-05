@@ -56,7 +56,7 @@
                         {
                             <a class="collapse-item" href="@Url.Action("QuestionsByTopic", "Question", new { topicId = t.Id })">@t.Name</a>
                         }
-                        <input id="topic-post" class="input-sm" placeholder="Add a topic"/><button onclick="createTopic()" class="btn btn-success btn-circle btn-sm"><i class="fa fa-plus"></i></button>
+                        <input id="topic-post" type="text" class="input-sm" placeholder="Add a topic"/><button onclick="createTopic()" class="btn btn-success btn-circle btn-sm"><i class="fa fa-plus"></i></button>
                     </div>
                 </div>
             </li>

@@ -10132,6 +10132,8 @@ a:focus {
   min-width: 10rem;
   font-size: 0.85rem;
   margin: 0 0 1rem 0;
+  background:#333 !important;
+  color:#fff
 }
 
 .sidebar .nav-item .collapse .collapse-inner .collapse-header,
@@ -10150,15 +10152,19 @@ a:focus {
   padding: 0.5rem 1rem;
   margin: 0 0.5rem;
   display: block;
-  color: #3a3b45;
+  color: #fff;
   text-decoration: none;
   border-radius: 0.35rem;
   white-space: nowrap;
 }
 
+.collapse-item:hover{
+    color:#222 !important
+}
+
 .sidebar .nav-item .collapse .collapse-inner .collapse-item:hover,
 .sidebar .nav-item .collapsing .collapse-inner .collapse-item:hover {
-  background-color: #eaecf4;
+    background-color: #eaecf4;
 }
 
 .sidebar .nav-item .collapse .collapse-inner .collapse-item:active,
