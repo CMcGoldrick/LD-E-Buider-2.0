@@ -7,103 +7,57 @@ using Lethal.Developer.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
+using Lethal.Developer.Helpers.HttpResponseMessages;
+using Lethal.Developer.ViewModels;
 
 namespace Lethal.Developer.Controllers
 {
     //[Authorize]
-    public class TopicController : Controller
+    public class TopicController : RootController
     {
         private readonly ITopicProvider _topicProvider;
 
         public TopicController(ITopicProvider topicProvider)
+            : base(topicProvider)
         {
             _topicProvider = topicProvider;
         }
 
-        // GET: Topic
-        public ActionResult<Topic> Index()
+
+        [HttpPost]
+        //[ValidateAntiForgeryToken]
+        [Route("topics/create")]
+        public async Task<IActionResult> CreateTopic([FromBody] TopicViewModel topic)
         {
             try
             {
-                var userId = Guid.Parse("9776506B-8CFE-448F-1BF5-08D7DCE61A3B");
-
-                var topic = _topicProvider.GetAllTopicsAsync(userId);
-                return PartialView("_TopicsPartial", topic);
+                await _topicProvider.CreateTopicAsync(UserId, topic);
+                return Ok(Post.Success("question"));
             }
             catch (Exception ex)
             {
-
+                return BadRequest(ex.Message);
                 throw;
             }
         }
 
-        // GET: Topic/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
 
-        // POST: Topic/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
-        {
-            try
-            {
-                // TODO: Add insert logic here
+        //public ActionResult<Topic> Index()
+        //{
+        //    try
+        //    {
+        //        var userId = Guid.Parse("9776506B-8CFE-448F-1BF5-08D7DCE61A3B");
 
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
+        //        var topic = _topicProvider.GetAllTopicsAsync(userId);
+        //        return PartialView("_TopicsPartial", topic);
+        //    }
+        //    catch (Exception ex)
+        //    {
 
-        // GET: Topic/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
+        //        throw;
+        //    }
+        //}
 
-        // POST: Topic/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
 
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Topic/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Topic/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
     }
 }

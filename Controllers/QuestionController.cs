@@ -31,6 +31,7 @@ namespace Lethal.Developer.Controllers
         }
 
         [HttpPost]
+        //[ValidateAntiForgeryToken]
         [Route("questions/create")]
         public async Task<IActionResult> CreateQuestion([FromBody] CreateQuestionViewModel question)
         {
@@ -76,6 +77,7 @@ namespace Lethal.Developer.Controllers
         }
 
         [HttpPut]
+        //[ValidateAntiForgeryToken]
         [Route("questions/update")]
         public async Task<IActionResult> UpdateQuestion([FromBody] CreateQuestionViewModel question)
         {

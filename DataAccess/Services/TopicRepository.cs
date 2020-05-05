@@ -19,6 +19,21 @@ namespace Lethal.Developer.DataAccess.Services
             _serviceProvider = serviceProvider;
         }
 
+        public async Task CreateTopicAsync(Topic topic)
+        {
+            try
+            {
+                var db = _serviceProvider.GetService<ApplicationDbContext>();
+                db.Add(topic);
+                await db.SaveChangesAsync();
+            }
+            catch (Exception dbex)
+            {
+
+                throw;
+            }
+        }
+
         public async Task<IEnumerable<Topic>> GetAllTopicsAsync(Guid userId)
         {
             try

@@ -8,6 +8,7 @@ namespace Lethal.Developer.DataAccess.Interfaces
 {
     public interface ITopicRepository
     {
+        Task CreateTopicAsync(Topic topic);
         Task<IEnumerable<Topic>> GetAllTopicsAsync(Guid userId);
     }
 }

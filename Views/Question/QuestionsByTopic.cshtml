@@ -24,6 +24,10 @@
 
 <button onclick="createQuestion()" class="btn-success create-button">Create Question</button>
 
+<div id="question-alert" class="alert alert-warning d-none text-center" role="alert">
+    Dafuq dude, you didn't type a question.
+</div>
+
 @foreach (var item in Model.Questions)
 {
     <div class="card shadow">
@@ -64,22 +68,27 @@
             TopicId: @Model.TopicId
         };
 
-        $.ajax({
-            type: "POST",
-            url: '/questions/create',
-            //headers: {
-            //    'Authorization': `Bearer ${token}`,
-            //},
-            datatype: "json",
-            contentType: "application/json",
-            data: JSON.stringify(data),
-            success: function (result) {
-                console.log(result);
-                window.location.reload();
-            },
-            error: function (error) {
-            }
-        })
+        if (question == "") {
+            document.getElementById("question-alert").style = "display:block !important;"
+        }
+        else {
+            $.ajax({
+                type: "POST",
+                url: '/questions/create',
+                //headers: {
+                //    'Authorization': `Bearer ${token}`,
+                //},
+                datatype: "json",
+                contentType: "application/json",
+                data: JSON.stringify(data),
+                success: function (result) {
+                    console.log(result);
+                    window.location.reload();
+                },
+                error: function (error) {
+                }
+            })
+        }
     }
 
     function openIndividualQuestion(id) {

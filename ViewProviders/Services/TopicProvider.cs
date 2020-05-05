@@ -1,4 +1,5 @@
 ﻿using Lethal.Developer.DataAccess.Interfaces;
+using Lethal.Developer.Models;
 using Lethal.Developer.ViewModels;
 using Lethal.Developer.ViewProviders.Interfaces;
 using System;
@@ -15,6 +16,25 @@ namespace Lethal.Developer.ViewProviders.Services
 		public TopicProvider(ITopicRepository topicRepository)
 		{
 			_topicRepository = topicRepository;
+		}
+
+		public async Task CreateTopicAsync(Guid userId, TopicViewModel tvm)
+		{
+			try
+			{
+				var topic = new Topic();
+
+				topic.CreatedDate = DateTime.UtcNow;
+				topic.Name = tvm.Name;
+				topic.UserId = userId;
+
+				await _topicRepository.CreateTopicAsync(topic);
+			}
+			catch (Exception ex)
+			{
+
+				throw;
+			}
 		}
 
 		public async Task <IEnumerable<TopicViewModel>> GetAllTopicsAsync(Guid userId)
