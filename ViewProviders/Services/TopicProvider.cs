@@ -30,7 +30,7 @@ namespace Lethal.Developer.ViewProviders.Services
 
 				await _topicRepository.CreateTopicAsync(topic);
 			}
-			catch (Exception ex)
+			catch (Exception)
 			{
 
 				throw;
@@ -51,11 +51,24 @@ namespace Lethal.Developer.ViewProviders.Services
 
 				return tvm;
 			}
-			catch (Exception ex)
+			catch (Exception)
 			{
 
 				throw;
 			}
         }
+
+		public async Task DeleteTopicAsync(int id)
+		{
+			try
+			{
+				await _topicRepository.DeleteTopicAsync(id);
+			}
+			catch (Exception)
+			{
+
+				throw;
+			}
+		}
     }
 }

@@ -10,5 +10,6 @@ namespace Lethal.Developer.DataAccess.Interfaces
     {
         Task CreateTopicAsync(Topic topic);
         Task<IEnumerable<Topic>> GetAllTopicsAsync(Guid userId);
+        Task DeleteTopicAsync(int Id);
     }
 }

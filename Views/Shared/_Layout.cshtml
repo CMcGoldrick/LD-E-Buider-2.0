@@ -54,9 +54,14 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         @foreach (var t in Model.Topics)
                         {
-                            <a class="collapse-item" href="@Url.Action("QuestionsByTopic", "Question", new { topicId = t.Id })">@t.Name</a>
+                            <div class="d-flex" style="justify-content:space-between">
+                                <a class="collapse-item" href="@Url.Action("QuestionsByTopic", "Question", new { topicId = t.Id })">@t.Name</a>
+                                <button type="button" class="btn btn-danger btn-sm btn-circle" onclick="showModal(@t.Id, '@t.Name')"><i class="fa fa-minus"></i></button>
+                            </div>
                         }
-                        <input id="topic-post" type="text" class="input-sm" placeholder="Add a topic"/><button onclick="createTopic()" class="btn btn-success btn-circle btn-sm"><i class="fa fa-plus"></i></button>
+                        <div class="d-flex" style="justify-content:space-between">
+                            <input id="topic-post" type="text" class="input-sm" placeholder="Add a topic" /><button onclick="createTopic()" class="btn btn-success btn-circle btn-sm"><i class="fa fa-plus"></i></button>
+                        </div>
                     </div>
                 </div>
             </li>
@@ -143,6 +148,28 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-dark font-weight-bold" id="exampleModalLongTitle"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body text-danger font-weight-bold">
+                    Are you sure you want to remove Topic? This will also remove all associated Questions.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                    <button id="delete-topic" type="button" onclick="" class="btn btn-danger">Delete Topic</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- End of Page Wrapper -->
     @*<footer class="sticky-footer bg-white">
             <div class="container my-auto">
@@ -174,11 +201,34 @@
     <script src="~/src/js/demo/chart-pie-demo.js"></script>
 
     <script>
+        function showModal(id, name) {
+            $('#exampleModalCenter').on('show.bs.modal', function (e) {
+                $(e.currentTarget).find("#exampleModalLongTitle")[0].innerText = name;
+                $(e.currentTarget).find("#delete-topic").attr('onclick', `deleteTopic(${id})`);
+            });
+            $('#exampleModalCenter').modal('show');
+        }
+
+        function deleteTopic(id) {
+            $.ajax({
+                type: "DELETE",
+                url: `/topics/delete/${id}`,
+                datatype: "json",
+                contentType: "application/json",
+                //data: JSON.stringify(data),
+                success: function (result) {
+                    console.log(result);
+                    window.location.reload();
+                },
+                error: function (error) {
+                }
+            })
+        }
 
         function createTopic() {
             var topic = document.getElementById("topic-post").value;
             var data = {
-                Name : topic
+                Name: topic
             };
 
             $.ajax({

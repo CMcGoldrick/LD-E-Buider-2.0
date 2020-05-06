@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using Lethal.Developer.DataAccess.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using System.Data.Common;
 
 namespace Lethal.Developer.DataAccess.Services
 {
@@ -27,7 +28,7 @@ namespace Lethal.Developer.DataAccess.Services
                 db.Add(topic);
                 await db.SaveChangesAsync();
             }
-            catch (Exception dbex)
+            catch (DbException dbex)
             {
 
                 throw;
@@ -44,7 +45,24 @@ namespace Lethal.Developer.DataAccess.Services
 
                 return topic;
             }
-            catch (Exception ex)
+            catch (DbException dbex)
+            {
+
+                throw;
+            }
+        }
+
+        public async Task DeleteTopicAsync(int id)
+        {
+            try
+            {
+                var db = _serviceProvider.GetService<ApplicationDbContext>();
+                var topic = await db.Topics.FirstOrDefaultAsync(t => t.Id == id);
+
+                db.Remove(topic);
+                await db.SaveChangesAsync();
+            }
+            catch (DbException dbex)
             {
 
                 throw;

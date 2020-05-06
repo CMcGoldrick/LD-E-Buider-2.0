@@ -11,5 +11,6 @@ namespace Lethal.Developer.ViewProviders.Interfaces
     {
         Task CreateTopicAsync(Guid userId, TopicViewModel topic);
         Task<IEnumerable<TopicViewModel>> GetAllTopicsAsync(Guid userId);
+        Task DeleteTopicAsync(int id);
     }
 }

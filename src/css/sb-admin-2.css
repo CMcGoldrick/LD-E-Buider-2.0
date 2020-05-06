@@ -4349,7 +4349,7 @@ input[type="button"].btn-block {
 .card-body {
     flex: 1 1 auto;
     padding: 1.25rem;
-    background: #333;
+    background: #111;
     color: #fff;
 }
 
@@ -5602,7 +5602,7 @@ a.close.disabled {
 .modal-footer {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  /*justify-content: flex-end;*/
   padding: 1rem;
   border-top: 1px solid #e3e6f0;
   border-bottom-right-radius: 0.3rem;

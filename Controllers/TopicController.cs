@@ -41,22 +41,22 @@ namespace Lethal.Developer.Controllers
             }
         }
 
+        [HttpDelete]
+        //[ValidateAntiForgeryToken]
+        [Route("topics/delete/{id}")]
+        public async Task<IActionResult> DeleteAction(int id)
+        {
+            try
+            {
+                await _topicProvider.DeleteTopicAsync(id);
+                return Ok(Delete.Success("topic"));
+            }
+            catch (Exception ex)
+            {
 
-        //public ActionResult<Topic> Index()
-        //{
-        //    try
-        //    {
-        //        var userId = Guid.Parse("9776506B-8CFE-448F-1BF5-08D7DCE61A3B");
-
-        //        var topic = _topicProvider.GetAllTopicsAsync(userId);
-        //        return PartialView("_TopicsPartial", topic);
-        //    }
-        //    catch (Exception ex)
-        //    {
-
-        //        throw;
-        //    }
-        //}
+                throw;
+            }
+        }
 
 
     }
