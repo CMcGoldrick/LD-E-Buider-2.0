@@ -28,25 +28,28 @@
     Dafuq dude, you didn't type a question.
 </div>
 
-@foreach (var item in Model.Questions)
-{
-    <div class="card shadow">
-        <a href="@(cardcollapseId + index)" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="@(collapse + index)">
-            <div class="float-left">
-                <h6 class="m-0 font-weight-bold text-primary">@Html.Raw(item.Q)</h6>
-            </div>
-            <div class="float-right">
-                <button onclick="openIndividualQuestion(@item.Id)" class="btn-warning rounded">Edit</button>
-                <button onclick="deleteQuestion(@item.Id)" class="btn-danger rounded">Delete</button>
-            </div>
-        </a>
-            <div class="collapse" id="@(collapse + index)">
-                <div class="card-body">
-                    @Html.Raw(item.A)
+@{
+
+    foreach (var item in Model?.Questions)
+    {
+        <div class="card shadow">
+            <a href="@(cardcollapseId + index)" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="@(collapse + index)">
+                <div class="float-left">
+                    <h6 class="m-0 font-weight-bold text-primary">@Html.Raw(item.Q)</h6>
+                </div>
+                <div class="float-right">
+                    <button onclick="openIndividualQuestion(@item.Id)" class="btn-warning rounded">Edit</button>
+                    <button onclick="deleteQuestion(@item.Id)" class="btn-danger rounded">Delete</button>
+                </div>
+            </a>
+                <div class="collapse" id="@(collapse + index)">
+                    <div class="card-body">
+                        @Html.Raw(item.A)
+                    </div>
                 </div>
             </div>
-        </div>
-        index++;
+            index++;
+    }
 }
 
 <script>

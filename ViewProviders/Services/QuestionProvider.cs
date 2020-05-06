@@ -12,10 +12,12 @@ namespace Lethal.Developer.ViewProviders.Services
     public class QuestionProvider : IQuestionProvider
     {
         IQuestionRepository _questionRepository;
+        ITopicRepository _topicRepository;
 
-        public QuestionProvider(IQuestionRepository questionRepository)
+        public QuestionProvider(IQuestionRepository questionRepository, ITopicRepository topicRepository)
         {
             _questionRepository = questionRepository;
+            _topicRepository = topicRepository;
         }
 
         public async Task CreateQuestionAsync(Guid userId, CreateQuestionViewModel question)
@@ -59,7 +61,11 @@ namespace Lethal.Developer.ViewProviders.Services
 
                 qvm.Questions = qs;
                 qvm.TopicId = topicId;
-                qvm.TopicName = questions.FirstOrDefault().Topic.Name;
+
+                if (questions.Any())
+                    qvm.TopicName = questions.FirstOrDefault().Topic.Name;
+                else
+                    qvm.TopicName = _topicRepository.GetTopicAsync(topicId).Result.Name;
 
                 return qvm;
             }

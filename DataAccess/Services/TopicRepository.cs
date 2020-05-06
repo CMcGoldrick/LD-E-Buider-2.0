@@ -28,7 +28,7 @@ namespace Lethal.Developer.DataAccess.Services
                 db.Add(topic);
                 await db.SaveChangesAsync();
             }
-            catch (DbException dbex)
+            catch (DbException)
             {
 
                 throw;
@@ -45,11 +45,29 @@ namespace Lethal.Developer.DataAccess.Services
 
                 return topic;
             }
-            catch (DbException dbex)
+            catch (DbException)
             {
 
                 throw;
             }
+        }
+
+        public async Task<Topic> GetTopicAsync(int id)
+        {
+            try
+            {
+                var db = _serviceProvider.GetService<ApplicationDbContext>();
+
+                var topic = await db.Topics.FirstOrDefaultAsync(t => t.Id == id);
+
+                return topic;
+            }
+            catch (DbException)
+            {
+
+                throw;
+            }
+
         }
 
         public async Task DeleteTopicAsync(int id)
@@ -62,7 +80,7 @@ namespace Lethal.Developer.DataAccess.Services
                 db.Remove(topic);
                 await db.SaveChangesAsync();
             }
-            catch (DbException dbex)
+            catch (DbException)
             {
 
                 throw;
