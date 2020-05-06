@@ -160,7 +160,7 @@
                     </button>
                 </div>
                 <div class="modal-body text-danger font-weight-bold">
-                    Are you sure you want to remove Topic? This will also remove all associated Questions.
+                    Are you sure you want to remove Topic <span class="text-gray-700 font-weight-bold" id="exampleModalLongTitle2"></span> ?? This will also remove all associated Questions.
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
@@ -169,16 +169,6 @@
             </div>
         </div>
     </div>
-
-    <!-- End of Page Wrapper -->
-    @*<footer class="sticky-footer bg-white">
-            <div class="container my-auto">
-                <div class="copyright text-center my-auto">
-                    <span>Copyright &copy; Your Website 2019</span>
-                </div>
-            </div>
-        </footer>*@
-    <!-- Bootstrap core JavaScript-->
 
     @RenderSection("Scripts", required: false)
 
@@ -204,6 +194,7 @@
         function showModal(id, name) {
             $('#exampleModalCenter').on('show.bs.modal', function (e) {
                 $(e.currentTarget).find("#exampleModalLongTitle")[0].innerText = name;
+                $(e.currentTarget).find("#exampleModalLongTitle2")[0].innerText = name;
                 $(e.currentTarget).find("#delete-topic").attr('onclick', `deleteTopic(${id})`);
             });
             $('#exampleModalCenter').modal('show');
