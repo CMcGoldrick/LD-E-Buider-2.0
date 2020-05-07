@@ -8628,11 +8628,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\13127\\Documents\\repos\\Lethal.Developer\\Lethal.Developer.csproj",
+      "projectUniqueName": "C:\\Users\\13127\\Documents\\repos\\LD-E-Buider-2.0\\Lethal.Developer.csproj",
       "projectName": "Lethal.Developer",
-      "projectPath": "C:\\Users\\13127\\Documents\\repos\\Lethal.Developer\\Lethal.Developer.csproj",
+      "projectPath": "C:\\Users\\13127\\Documents\\repos\\LD-E-Buider-2.0\\Lethal.Developer.csproj",
       "packagesPath": "C:\\Users\\13127\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\13127\\Documents\\repos\\Lethal.Developer\\obj\\",
+      "outputPath": "C:\\Users\\13127\\Documents\\repos\\LD-E-Buider-2.0\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\"
