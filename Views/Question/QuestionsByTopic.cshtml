@@ -54,7 +54,9 @@
 
 <script>
     function createQuestion() {
-        var question = document.getElementsByTagName("input")[0].value;
+        var question = document.getElementsByTagName("input")[1].value;
+
+        console.log(question);
 
         var iframe = document.getElementsByTagName("iframe")[0];
         var html = iframe.contentWindow.document.getElementsByTagName("html")[0];
