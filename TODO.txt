@@ -1,0 +1,2 @@
+﻿authentication:
+ensure that all methods are returning data based on userId

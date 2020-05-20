@@ -5,19 +5,30 @@ using System.Threading.Tasks;
 using Lethal.Developer.ViewProviders.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
+
 namespace Lethal.Developer.Controllers
 {
     public class ExamController : RootController
     {
-        public ExamController(ITopicProvider topicProvider)
+        IQuestionProvider _questionProvider;
+        ITopicProvider _topicProvider;
+
+        public ExamController(ITopicProvider topicProvider, IQuestionProvider questionProvider)
             :base(topicProvider)
         {
-
+            _questionProvider = questionProvider;
+            _topicProvider = topicProvider;
         }
 
-        public IActionResult Index()
+        [HttpGet]
+        [Route("exam/{topicId}")]
+        public async Task<IActionResult> ExamTopic(int topicId)
         {
-            return View();
+            var topic = await _topicProvider.GetTopicsAsync(UserId, topicId);
+            var bvm = await BaseViewModel;
+            topic.FirstOrDefault().Topics = bvm.Topics;
+
+            return View(topic.FirstOrDefault());
         }
     }
 }

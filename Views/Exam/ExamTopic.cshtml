@@ -1,0 +1,66 @@
+﻿@model Lethal.Developer.ViewModels.TopicViewModel
+
+@{
+    ViewData["Title"] = "ExamByTopic";
+}
+
+<h1 class="page-header">Topic: <span class="btc-color">@Model.Name</span></h1>
+
+
+<div class="row exam-row">
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card-10 card border-left-primary shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div style="color:#4e73df !important" class="text-xs font-weight-bold text-uppercase mb-1"># of Exam Questions</div>
+                        <div style="color:#4e73df !important" class="h5 mb-0 font-weight-bold">10</div>
+                        <a href="www.google.com"></a>
+                    </div>
+                    <div class="col-auto">
+                        <i style="color:#4e73df !important" class="fas fa-book-open fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card-20 card border-left-warning shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1"># of Exam Questions</div>
+                        <div class="h5 mb-0 font-weight-bold text-warning">20</div>
+                        <a href="www.google.com"></a>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-book-open fa-2x text-warning"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card-50 card border-left-danger shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-danger text-uppercase mb-1"># of Exam Questions</div>
+                        <div class="h5 mb-0 font-weight-bold text-danger">50</div>
+                        <a href="www.google.com"></a>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-book-open fa-2x text-danger"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(".card-body").click(function () {
+        window.open($(this).find("a:first").attr("href"), '_blank');
+        return false;
+    });
+</script>

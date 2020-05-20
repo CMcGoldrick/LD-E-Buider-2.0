@@ -25,7 +25,7 @@ namespace Lethal.Developer.Controllers
             try
             {
                 var vm = new BaseViewModel();
-                var topics = await _topicProvider.GetAllTopicsAsync(UserId);
+                var topics = await _topicProvider.GetTopicsAsync(UserId, default);
                 vm.Topics = topics;
 
                 return vm;

@@ -56,3 +56,21 @@ input[type=text]:focus, textarea:focus, input:focus {
     border-radius: 15px;
     background: darkgreen;
 }
+
+.exam-row {
+    justify-content:center;
+}
+
+.card-10:hover {
+    border: 2px solid #4e73df;
+    cursor: pointer !important;
+}
+.card-20:hover {
+    border: 2px solid var(--warning);
+    cursor: pointer !important;
+}
+.card-50:hover {
+    border: 2px solid var(--danger);
+    cursor: pointer !important;
+}
+

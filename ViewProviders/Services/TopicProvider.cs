@@ -37,11 +37,11 @@ namespace Lethal.Developer.ViewProviders.Services
 			}
 		}
 
-		public async Task <IEnumerable<TopicViewModel>> GetAllTopicsAsync(Guid userId)
+		public async Task <IEnumerable<TopicViewModel>> GetTopicsAsync(Guid userId, int? topicId)
         {
 			try
 			{
-				var topics = await _topicRepository.GetAllTopicsAsync(userId);
+				var topics = await _topicRepository.GetTopicsAsync(userId, topicId);
 				var tvm = new List<TopicViewModel>();
 				
 				foreach(var t in topics)

@@ -10,7 +10,7 @@ namespace Lethal.Developer.ViewProviders.Interfaces
     public interface ITopicProvider
     {
         Task CreateTopicAsync(Guid userId, TopicViewModel topic);
-        Task<IEnumerable<TopicViewModel>> GetAllTopicsAsync(Guid userId);
+        Task<IEnumerable<TopicViewModel>> GetTopicsAsync(Guid userId, int? topicId);
         Task DeleteTopicAsync(int id);
     }
 }

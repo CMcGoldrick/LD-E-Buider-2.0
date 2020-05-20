@@ -465,7 +465,6 @@ C:\Users\13127\Documents\repos\LD-E-Buider-2.0\bin\Debug\netcoreapp3.1\runtimes\
 C:\Users\13127\Documents\repos\LD-E-Buider-2.0\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\13127\Documents\repos\LD-E-Buider-2.0\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\13127\Documents\repos\LD-E-Buider-2.0\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
-C:\Users\13127\Documents\repos\LD-E-Buider-2.0\obj\Debug\netcoreapp3.1\Lethal.Developer.csprojAssemblyReference.cache
 C:\Users\13127\Documents\repos\LD-E-Buider-2.0\obj\Debug\netcoreapp3.1\Lethal.Developer.csproj.CoreCompileInputs.cache
 C:\Users\13127\Documents\repos\LD-E-Buider-2.0\obj\Debug\netcoreapp3.1\Lethal.Developer.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\13127\Documents\repos\LD-E-Buider-2.0\obj\Debug\netcoreapp3.1\Lethal.Developer.MvcApplicationPartsAssemblyInfo.cache
@@ -500,3 +499,5 @@ C:\Users\13127\Documents\repos\LD-E-Buider-2.0\obj\Debug\netcoreapp3.1\Lethal.De
 C:\Users\13127\Documents\repos\LD-E-Buider-2.0\obj\Debug\netcoreapp3.1\Lethal.Developer.pdb
 C:\Users\13127\Documents\repos\LD-E-Buider-2.0\obj\Debug\netcoreapp3.1\Lethal.Developer.genruntimeconfig.cache
 C:\Users\13127\Documents\repos\LD-E-Buider-2.0\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_loginLayout.cshtml.g.cs
+C:\Users\13127\Documents\repos\LD-E-Buider-2.0\obj\Debug\netcoreapp3.1\Razor\Views\Exam\ExamTopic.cshtml.g.cs
+C:\Users\13127\Documents\repos\LD-E-Buider-2.0\obj\Debug\netcoreapp3.1\Lethal.Developer.csprojAssemblyReference.cache

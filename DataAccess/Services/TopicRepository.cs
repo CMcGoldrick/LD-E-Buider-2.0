@@ -35,15 +35,19 @@ namespace Lethal.Developer.DataAccess.Services
             }
         }
 
-        public async Task<IEnumerable<Topic>> GetAllTopicsAsync(Guid userId)
+        public async Task<IEnumerable<Topic>> GetTopicsAsync(Guid userId, int? topicId)
         {
             try
             {
                 var db = _serviceProvider.GetService<ApplicationDbContext>();
+                var topics = new List<Topic>();
 
-                var topic = await db.Topics.ToListAsync();
+                if (topicId == default)
+                    topics = await db.Topics.ToListAsync();
+                else
+                    topics = await db.Topics.Where(t => t.Id == topicId).ToListAsync();
 
-                return topic;
+                return topics;
             }
             catch (DbException)
             {

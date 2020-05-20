@@ -76,7 +76,9 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         @foreach (var t in Model.Topics)
                         {
-                            <a class="collapse-item" href="login.html">@t.Name</a>
+                            <div class="d-flex" style="justify-content:space-between">
+                                <a class="collapse-item" href="@Url.Action("ExamTopic", "Exam", new { topicId = t.Id })">@t.Name</a>
+                            </div>
                         }
                     </div>
                 </div>
