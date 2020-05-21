@@ -86,6 +86,7 @@ namespace Lethal.Developer.ViewProviders.Services
 
                 ql.Add(new Question { Id = question.Id, Q = question.Q, A = question.A });
 
+                qvm.TopicId = question.TopicId;
                 qvm.Questions = ql;
 
                 return qvm;

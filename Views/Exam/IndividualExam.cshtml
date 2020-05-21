@@ -7,7 +7,7 @@
     int carrouselIndex = 1;
 }
 
-<h1 class="page-header">@Model.Questions.Count() Exam Questions for <span class="btc-color">@Model.TopicName</span></h1>
+<h1 class="page-header">@Model.Questions.Count() Question Exam for <span class="btc-color">@Model.TopicName</span></h1>
 
 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
@@ -53,12 +53,12 @@
                                     5
                                 </label>
                             </div>
+                            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                                <button class="btn-warning rounded" onclick="storeResult('resultRadio-0')">next question></button>
+                                <span class="sr-only">Next</span>
+                            </a>
                         </div>
 
-                        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                            <button onclick="storeResult('resultRadio-0')">next question></button>
-                            <span class="sr-only">Next</span>
-                        </a>
                     </div>
                 </div>
             </div>
@@ -108,23 +108,23 @@
                                         5
                                     </label>
                                 </div>
+                                @if (carrouselIndex == Model.Questions.Count() - 1)
+                                {
+                                    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                                        <div>this is the final question</div>
+                                        <button class="btn-success rounded" onclick="saveResult('resultRadio-@carrouselIndex', @Model.Questions.Count())">Submit Results</button>
+                                        <span class="sr-only">Next</span>
+                                    </a>
+                                }
+                                else
+                                {
+                                    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                                        <button class="btn-warning rounded" onclick="storeResult('resultRadio-@carrouselIndex')">Next Question></button>
+                                        <span class="sr-only">Next</span>
+                                    </a>
+                                }
                             </div>
                             
-                            @if (carrouselIndex == Model.Questions.Count() - 1)
-                            {
-                                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                                    <div>this is the final question</div>
-                                    <button onclick="saveResult('resultRadio-@carrouselIndex', @Model.Questions.Count())">Submit Results</button>
-                                    <span class="sr-only">Next</span>
-                                </a>
-                            }
-                            else
-                            {
-                                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                                    <button onclick="storeResult('resultRadio-@carrouselIndex')">Next Question></button>
-                                    <span class="sr-only">Next</span>
-                                </a>
-                            }
                         </div>
                     </div>
                 </div>
@@ -133,16 +133,11 @@
             carrouselIndex++;
         }
 
-        <div class="carousel-item last">
-            <div>Your average score for this exam is:</div>
+        <div class="carousel-item">
+            <div>Your average score for this exam is: <span id="examresult"></span></div>
             <button>Cancel</button>
         </div>
-
     </div>
-    @*<a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-        <button onclick="storeResult()">next question></button>
-        <span class="sr-only">Next</span>
-    </a>*@
 </div>
 
 
@@ -224,10 +219,9 @@
 
         var average = (sum).toFixed(3) / (count).toFixed(3);
 
-
+        document.getElementById('examresult').innerText = average;
 
         console.log(average);
-
     }
 
     $(document).ready(function () {
