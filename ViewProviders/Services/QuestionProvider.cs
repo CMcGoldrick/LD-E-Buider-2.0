@@ -41,11 +41,11 @@ namespace Lethal.Developer.ViewProviders.Services
             }
         }
 
-        public async Task<QuestionViewModel> GetQuestionsByTopicAsync(Guid userId, int topicId)
+        public async Task<QuestionViewModel> GetQuestionsByTopicAsync(Guid userId, int topicId, int? amount)
         {
             try
             {
-                var questions = await _questionRepository.GetQuestionsByTopicAsync(userId, topicId);
+                var questions = await _questionRepository.GetQuestionsByTopicAsync(userId, topicId, amount);
                 var qs = new List<Question>();
                 var qvm = new QuestionViewModel();
 

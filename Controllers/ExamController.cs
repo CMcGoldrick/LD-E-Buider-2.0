@@ -30,5 +30,16 @@ namespace Lethal.Developer.Controllers
 
             return View(topic.FirstOrDefault());
         }
+
+        [HttpGet]
+        [Route("exam/individual/{topicId}/{amount}")]
+        public async Task<IActionResult> IndividualExam(int topicId, int amount)
+        {
+            var questions = await _questionProvider.GetQuestionsByTopicAsync(UserId, topicId, amount);
+            var bvm = await BaseViewModel;
+            questions.Topics = bvm.Topics;
+
+            return View(questions);
+        }
     }
 }

@@ -39,15 +39,30 @@ namespace Lethal.Developer.DataAccess.Services
             }
         }
 
-        public async Task<IEnumerable<Question>> GetQuestionsByTopicAsync(Guid userId, int topicId)
+        public async Task<IEnumerable<Question>> GetQuestionsByTopicAsync(Guid userId, int topicId, int? amount)
         {
             try
             {
                 var db = _serviceProvider.GetService<ApplicationDbContext>();
+                var questions = new List<Question>();
 
-                var questions = await db.Questions
-                    .Include(t => t.Topic)
-                    .Where(q => q.UserId == userId && q.TopicId == topicId).ToListAsync();
+                if(amount == default)
+                {
+                    questions = await db.Questions
+                        .Include(t => t.Topic)
+                        .Where(q => q.UserId == userId && q.TopicId == topicId).ToListAsync();
+                }
+                else
+                {
+                    var random = new Random();
+
+                    questions = await db.Questions
+                        .Include(t => t.Topic)
+                        .Where(q => q.UserId == userId && q.TopicId == topicId).
+                        ToListAsync();
+
+                    questions = questions.OrderBy(x => random.Next()).Take((int)amount).ToList();
+                }
 
                 return questions;
             }

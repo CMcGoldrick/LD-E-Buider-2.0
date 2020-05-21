@@ -51,7 +51,7 @@ namespace Lethal.Developer.Controllers
         [Route("questions/{topicId}")]
         public async Task<IActionResult> QuestionsByTopic(int topicId)
         {
-            var questions = await _questionProvider.GetQuestionsByTopicAsync(UserId, topicId);         
+            var questions = await _questionProvider.GetQuestionsByTopicAsync(UserId, topicId, default);         
             var bvm = await BaseViewModel;
             questions.Topics = bvm.Topics;
             
