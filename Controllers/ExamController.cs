@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Lethal.Developer.ViewProviders.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
-
 namespace Lethal.Developer.Controllers
 {
     public class ExamController : RootController

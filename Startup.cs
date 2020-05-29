@@ -56,10 +56,12 @@ namespace Lethal.Developer
             // repository services 
             services.AddScoped<ITopicRepository, TopicRepository>();
             services.AddScoped<IQuestionRepository, QuestionRepository>();
+            services.AddScoped<IResultRepository, ResultRepository>();
 
             // provider services
             services.AddScoped<ITopicProvider, TopicProvider>();
             services.AddScoped<IQuestionProvider, QuestionProvider>();
+            services.AddScoped<IResultProvider, ResultProvider>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

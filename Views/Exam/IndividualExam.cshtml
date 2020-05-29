@@ -218,16 +218,32 @@
         resultArray.forEach(r => sum += r);
 
         var average = (sum).toFixed(3) / (count).toFixed(3);
+        var topicId = @Model.TopicId;
+
+        $.ajax({
+            type: "POST",
+            url: `/result/create/${average}/${topicId}`,
+            datatype: "json",
+            contentType: "application/json",
+            success: function (result) {
+                console.log(result);
+            },
+            error: function (error) {
+            }
+        })
 
         document.getElementById('examresult').innerText = average;
 
         console.log(average);
+
+        setTimeout(() => { window.location.href = `/results/${topicId}` }, 3000);
     }
 
     $(document).ready(function () {
-        $('.carousel').carousel({
-            interval: false,
-            wrap: false
+        $('#carouselExampleControls').carousel({
+            pause: true,
+            interval: false
+            //wrap: false
         })
     });
 
