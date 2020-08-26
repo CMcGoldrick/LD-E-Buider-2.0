@@ -1,2 +1,9 @@
 ﻿authentication:
 ensure that all methods are returning data based on userId
+
+build out theory panel:
+topic -> subtopics
+e.g. Data Structures
+        - Lists
+        - Arrays
+

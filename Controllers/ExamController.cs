@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Lethal.Developer.ViewProviders.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Lethal.Developer.Controllers
 {
+    //[Authorize]
     public class ExamController : RootController
     {
         IQuestionProvider _questionProvider;

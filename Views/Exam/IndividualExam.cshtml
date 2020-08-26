@@ -19,7 +19,7 @@
                         <button onclick="qAnswered(0)" class="btn-lg btn-warning">Grade Answer</button>
                     </div>
                     <div class="flip-card-back">
-                        <div>@Model.Questions.FirstOrDefault().A</div>
+                        <div>@Html.Raw(Model.Questions.FirstOrDefault().A)</div>
                         <hr class="sidebar-divider">
                         <h5>Grade your answer 1-5</h5>
                         <div class="centered-flex">
@@ -71,10 +71,10 @@
                     <div class="flip-card-inner rotatecard-@carrouselIndex">
                         <div class="flip-card-front">
                             <div>@q.Q</div>
-                            <button onclick="qAnswered(@carrouselIndex)" class="btn-lg btn-warning">Grade Answer</button>
+                            <button style="margin-top:55px;" onclick="qAnswered(@carrouselIndex)" class="btn-lg btn-warning">Grade Answer</button>
                         </div>
                         <div class="flip-card-back">
-                            <div>@q.A</div>
+                            <div>@Html.Raw(q.A)</div>
                             <hr class="sidebar-divider">
                             <h5>Grade your answer 1-5</h5>
                             <div class="centered-flex">
@@ -173,7 +173,7 @@
     /* Style the front side (fallback if image is missing) */
     .flip-card-front {
         background-color: #111;
-        color: black;
+        color: white;
     }
 
     /* Style the back side */

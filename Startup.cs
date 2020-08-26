@@ -21,6 +21,7 @@ using Lethal.Developer.ViewProviders.Interfaces;
 using Lethal.Developer.ViewProviders.Services;
 using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using Microsoft.AspNetCore.HttpOverrides;
+using Lethal.Developer.Middleware;
 
 namespace Lethal.Developer
 {
@@ -78,6 +79,8 @@ namespace Lethal.Developer
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
+            app.UseMiddleware<WebRequestMiddleware>();
 
             app.UseForwardedHeaders(new ForwardedHeadersOptions
             { 

@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Lethal.Developer.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200501011253_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20200820234714_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -141,21 +141,21 @@ namespace Lethal.Developer.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedDate = new DateTime(2020, 4, 30, 20, 12, 53, 511, DateTimeKind.Local).AddTicks(7074),
+                            CreatedDate = new DateTime(2020, 8, 20, 18, 47, 13, 909, DateTimeKind.Local).AddTicks(1468),
                             Name = "Data Structures",
                             UserId = new Guid("9776506b-8cfe-448f-1bf5-08d7dce61a3b")
                         },
                         new
                         {
                             Id = 2,
-                            CreatedDate = new DateTime(2020, 4, 30, 20, 12, 53, 514, DateTimeKind.Local).AddTicks(7504),
+                            CreatedDate = new DateTime(2020, 8, 20, 18, 47, 13, 917, DateTimeKind.Local).AddTicks(1040),
                             Name = "C#",
                             UserId = new Guid("9776506b-8cfe-448f-1bf5-08d7dce61a3b")
                         },
                         new
                         {
                             Id = 3,
-                            CreatedDate = new DateTime(2020, 4, 30, 20, 12, 53, 514, DateTimeKind.Local).AddTicks(7566),
+                            CreatedDate = new DateTime(2020, 8, 20, 18, 47, 13, 917, DateTimeKind.Local).AddTicks(1121),
                             Name = "ASP.NET",
                             UserId = new Guid("9776506b-8cfe-448f-1bf5-08d7dce61a3b")
                         });

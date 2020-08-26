@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Lethal.Developer.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -268,17 +268,17 @@ namespace Lethal.Developer.Migrations
             migrationBuilder.InsertData(
                 table: "Topics",
                 columns: new[] { "ID", "CreatedDate", "Name", "UserId" },
-                values: new object[] { 1, new DateTime(2020, 4, 30, 20, 12, 53, 511, DateTimeKind.Local).AddTicks(7074), "Data Structures", new Guid("9776506b-8cfe-448f-1bf5-08d7dce61a3b") });
+                values: new object[] { 1, new DateTime(2020, 8, 20, 18, 47, 13, 909, DateTimeKind.Local).AddTicks(1468), "Data Structures", new Guid("9776506b-8cfe-448f-1bf5-08d7dce61a3b") });
 
             migrationBuilder.InsertData(
                 table: "Topics",
                 columns: new[] { "ID", "CreatedDate", "Name", "UserId" },
-                values: new object[] { 2, new DateTime(2020, 4, 30, 20, 12, 53, 514, DateTimeKind.Local).AddTicks(7504), "C#", new Guid("9776506b-8cfe-448f-1bf5-08d7dce61a3b") });
+                values: new object[] { 2, new DateTime(2020, 8, 20, 18, 47, 13, 917, DateTimeKind.Local).AddTicks(1040), "C#", new Guid("9776506b-8cfe-448f-1bf5-08d7dce61a3b") });
 
             migrationBuilder.InsertData(
                 table: "Topics",
                 columns: new[] { "ID", "CreatedDate", "Name", "UserId" },
-                values: new object[] { 3, new DateTime(2020, 4, 30, 20, 12, 53, 514, DateTimeKind.Local).AddTicks(7566), "ASP.NET", new Guid("9776506b-8cfe-448f-1bf5-08d7dce61a3b") });
+                values: new object[] { 3, new DateTime(2020, 8, 20, 18, 47, 13, 917, DateTimeKind.Local).AddTicks(1121), "ASP.NET", new Guid("9776506b-8cfe-448f-1bf5-08d7dce61a3b") });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
